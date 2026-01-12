@@ -47,10 +47,11 @@ function displayWhitelist(whitelist) {
     return;
   }
 
-  // Sort by most recent first
-  const sorted = [...whitelist].sort((a, b) => b.addedAt - a.addedAt);
+  // Sort by most recent first but keep track of original indices
+  const sortedWithIndices = whitelist.map((item, idx) => ({ item, originalIndex: idx }))
+    .sort((a, b) => b.item.addedAt - a.item.addedAt);
   
-  sorted.forEach((item, index) => {
+  sortedWithIndices.forEach(({ item, originalIndex }) => {
     const div = document.createElement('div');
     div.className = 'whitelist-item';
     
@@ -68,7 +69,7 @@ function displayWhitelist(whitelist) {
           ${badge}
         </div>
       </div>
-      <button class="btn btn-remove" data-index="${whitelist.indexOf(item)}">Remove ✕</button>
+      <button class="btn btn-remove" data-index="${originalIndex}">Remove ✕</button>
     `;
     
     container.appendChild(div);

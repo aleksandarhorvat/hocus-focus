@@ -97,10 +97,18 @@ async function endSession() {
 }
 
 // Timer countdown
+let timerInterval = null;
+
 function startTimerCountdown() {
-  const interval = setInterval(() => {
+  // Clear any existing interval
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+  
+  timerInterval = setInterval(() => {
     if (!sessionActive || remainingTime <= 0) {
-      clearInterval(interval);
+      clearInterval(timerInterval);
+      timerInterval = null;
       return;
     }
     
@@ -253,10 +261,12 @@ async function updateWhitelistPreview() {
   preview.querySelectorAll('.remove-btn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       const index = parseInt(e.target.dataset.index);
-      whitelist.splice(index, 1);
-      await chrome.storage.sync.set({ whitelist });
-      await updateWhitelistPreview();
-      updateStatus('Removed from whitelist ✓');
+      if (index >= 0 && index < whitelist.length) {
+        whitelist.splice(index, 1);
+        await chrome.storage.sync.set({ whitelist });
+        await updateWhitelistPreview();
+        updateStatus('Removed from whitelist ✓');
+      }
     });
   });
 }
