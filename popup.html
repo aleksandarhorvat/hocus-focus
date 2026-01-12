@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hocus-Focus</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">✨ Hocus-Focus ✨</h1>
+      <div class="wand">🪄</div>
+    </div>
+    
+    <div class="timer-section">
+      <div class="timer-display" id="timerDisplay">00:00</div>
+      <div class="timer-controls">
+        <input type="number" id="timerInput" min="1" max="240" value="25" placeholder="Minutes">
+        <button id="startBtn" class="btn btn-start">Start Focus</button>
+        <button id="stopBtn" class="btn btn-stop" style="display: none;">End Session</button>
+      </div>
+      <div id="statusMessage" class="status-message"></div>
+    </div>
+
+    <div class="quick-add-section">
+      <h3>Quick Add Current Site</h3>
+      <button id="addCurrentSite" class="btn btn-add">Add to Whitelist ⭐</button>
+    </div>
+
+    <div class="whitelist-preview">
+      <h3>Allowed Sites (<span id="whitelistCount">0</span>)</h3>
+      <div id="whitelistPreview" class="whitelist-items"></div>
+    </div>
+
+    <div class="footer">
+      <button id="optionsBtn" class="btn btn-secondary">Manage Whitelist</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
