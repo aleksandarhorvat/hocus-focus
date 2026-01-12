@@ -79,6 +79,12 @@ async function stopSession() {
 
 // End session (common function)
 async function endSession() {
+  // Clear timer interval
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  
   await chrome.storage.local.set({
     sessionActive: false,
     sessionEnd: null
@@ -105,7 +111,7 @@ function startTimerCountdown() {
     clearInterval(timerInterval);
   }
   
-  timerInterval = setInterval(() => {
+  timerInterval = setInterval(async () => {
     if (!sessionActive || remainingTime <= 0) {
       clearInterval(timerInterval);
       timerInterval = null;
@@ -116,7 +122,7 @@ function startTimerCountdown() {
     updateTimerDisplay(remainingTime);
     
     if (remainingTime <= 0) {
-      endSession();
+      await endSession();
       updateStatus('Session completed! 🎉');
     }
   }, 1000);
