@@ -1,0 +1,16 @@
+# Build artifacts and dependencies
+node_modules/
+dist/
+*.pyc
+__pycache__/
+
+# Development files
+.DS_Store
+*.log
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+icons/create_icons.py

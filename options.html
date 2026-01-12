@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hocus-Focus Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">✨ Hocus-Focus Whitelist ✨</h1>
+      <div class="wand">🪄</div>
+    </div>
+
+    <div class="add-section">
+      <h2>Add New Site</h2>
+      <div class="input-group">
+        <input type="text" id="domainInput" placeholder="Enter domain (e.g., wikipedia.org)">
+        <button id="addBtn" class="btn btn-add">Add Domain ⭐</button>
+      </div>
+      <p class="hint">💡 Tip: Add domains like "wikipedia.org" (subdomains will be included automatically)</p>
+    </div>
+
+    <div class="stats-section">
+      <div class="stat-card">
+        <div class="stat-number" id="totalSites">0</div>
+        <div class="stat-label">Total Sites</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="studySites">0</div>
+        <div class="stat-label">Study Sites 📚</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="otherSites">0</div>
+        <div class="stat-label">Other Sites 🌐</div>
+      </div>
+    </div>
+
+    <div class="whitelist-section">
+      <div class="section-header">
+        <h2>Allowed Sites</h2>
+        <button id="clearAllBtn" class="btn btn-danger">Clear All</button>
+      </div>
+      <div id="whitelistContainer" class="whitelist-container"></div>
+    </div>
+
+    <div id="message" class="message"></div>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
